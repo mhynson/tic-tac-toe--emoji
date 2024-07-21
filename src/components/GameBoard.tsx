@@ -9,14 +9,22 @@ import Confetti from "react-confetti";
 import Fireworks from "@fireworks-js/react";
 
 export function GameBoard() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const { playerOne, playerTwo } = useContext(GameContext) as GameContextType;
-  const [winner, setWinner] = useState("");
-  const [isTie, setIsTie] = useState(false);
-  const [currentPlayer, setCurrentPlayer] = useState(playerOne);
+  const {
+    board,
+    currentPlayer,
+    emptyBoard,
+    isTie,
+    playerOne,
+    playerTwo,
+    setBoard,
+    setCurrentPlayer,
+    setIsTie,
+    setWinner,
+    winner,
+  } = useContext(GameContext) as GameContextType;
 
   const handleClick = (index: number) => {
-    if (board[index] === null) {
+    if (board[index] === "") {
       const newBoard = [...board];
       newBoard[index] = currentPlayer;
       setBoard(newBoard);
@@ -32,20 +40,17 @@ export function GameBoard() {
   };
 
   const handleReset = () => {
-    setBoard(Array(9).fill(null));
+    setBoard(emptyBoard);
     setCurrentPlayer(playerOne);
     setWinner("");
     setIsTie(false);
   };
-
-  // winner = getWinner(board);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-background">
       {/* Confetti for the Winner */}
       {!!winner && (
         <>
-          <Fireworks />
           <Confetti
             numberOfPieces={2000}
             recycle={false}
@@ -64,11 +69,11 @@ export function GameBoard() {
       )}
 
       <h1 className="text-3xl font-bold mb-8">Tic Tac Emoji</h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-2 bg-primary">
         {board.map((cell, index) => (
           <button
             key={index}
-            className={`w-40 h-40 bg-card text-9xl text-card-foreground rounded-md transition-colors hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-primary ${
+            className={`w-40 h-40 bg-secondary text-9xl transition-colors hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-primary ${
               cell !== null && !!winner ? "cursor-pointer hover:bg-accent" : ""
             } ${cell === null ? "animate-fade-in" : ""}`}
             disabled={!!winner}

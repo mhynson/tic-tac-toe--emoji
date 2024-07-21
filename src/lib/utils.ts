@@ -18,8 +18,7 @@ const getWinningLines = () => {
   ];
 };
 
-export const isBoardFilled = (board: string[]) =>
-  board.every((cell) => cell !== null);
+export const isBoardFilled = (board: string[]) => board.every((cell) => !cell);
 
 export const getWinner = (board: string[]) => {
   if (board.length !== 9 || board.join("").length < 5) return "";
