@@ -1,58 +1,53 @@
-import { useContext, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { GameContext, GameContextType } from "@/context/GameContext";
-import EmojiPicker from "emoji-picker-react";
-interface PlayerSelectorsProps {}
+import { useState } from "react";
+import { PlayerSelector } from "./PlayerSelector";
+interface PlayerSelectorsProps {
+  currentPlayer: string;
+  playerOne: string;
+  playerTwo: string;
+  setCurrentPlayer: (player: string) => void;
+  setPlayerOne: (player: string) => void;
+  setPlayerTwo: (player: string) => void;
+}
 
-const PlayerSelectors: React.FC<PlayerSelectorsProps> = () => {
-  const { playerOne, playerTwo, setPlayerOne, setPlayerTwo } = useContext(
-    GameContext
-  ) as GameContextType;
+const PlayerSelectors: React.FC<PlayerSelectorsProps> = (props) => {
+  const {
+    currentPlayer,
+    playerOne,
+    playerTwo,
+    setCurrentPlayer,
+    setPlayerOne,
+    setPlayerTwo,
+  } = props;
 
   const [pickerOneOpen, updatePickerOneOpen] = useState(false);
-
-  const handlePlayerOneChange = (e) => {
-    setPlayerOne(e.target.value);
-  };
-
-  const handlePlayerTwoChange = (e) => {
-    setPlayerTwo(e.target.value);
-  };
+  const [pickerTwoOpen, updatePickerTwoOpen] = useState(false);
 
   return (
     <div className="mt-4 flex items-center gap-4">
-      <div className="flex items-center gap-2">
-        <label
-          htmlFor="playerOne"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Player One:
-        </label>
-        <Input
-          id="playerOne"
-          value={playerOne}
-          onChange={handlePlayerOneChange}
-          maxLength={1}
-          className="w-12 text-center"
-        />
-        <EmojiPicker open={pickerOneOpen} />
-        <button onClick={() => updatePickerOneOpen(true)}>🙂+</button>
-      </div>
-      <div className="flex items-center gap-2">
-        <label
-          htmlFor="playerTwo"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Player Two:
-        </label>
-        <Input
-          id="playerTwo"
-          value={playerTwo}
-          onChange={handlePlayerTwoChange}
-          maxLength={1}
-          className="w-12 text-center"
-        />
-      </div>
+      <PlayerSelector
+        label="Player One"
+        isPickerOpen={pickerOneOpen}
+        setIsPickerOpen={updatePickerOneOpen}
+        player={playerOne}
+        setPlayer={(player) => {
+          if (currentPlayer === playerOne) {
+            setCurrentPlayer(player);
+          }
+          setPlayerOne(player);
+        }}
+      />
+      <PlayerSelector
+        label="Player Two"
+        isPickerOpen={pickerTwoOpen}
+        setIsPickerOpen={updatePickerTwoOpen}
+        player={playerTwo}
+        setPlayer={(player) => {
+          if (currentPlayer === playerTwo) {
+            setCurrentPlayer(player);
+          }
+          setPlayerTwo(player);
+        }}
+      />
     </div>
   );
 };

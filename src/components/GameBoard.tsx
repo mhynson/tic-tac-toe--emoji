@@ -6,7 +6,6 @@ import GameStatus from "./ui/GameStatus";
 import { getWinner, isBoardFilled } from "@/lib/utils";
 import PlayerSelectors from "./ui/PlayerSelectors";
 import Confetti from "react-confetti";
-import Fireworks from "@fireworks-js/react";
 
 export function GameBoard() {
   const {
@@ -19,6 +18,8 @@ export function GameBoard() {
     setBoard,
     setCurrentPlayer,
     setIsTie,
+    setPlayerOne,
+    setPlayerTwo,
     setWinner,
     winner,
   } = useContext(GameContext) as GameContextType;
@@ -68,7 +69,7 @@ export function GameBoard() {
         />
       )}
       <h1 className="text-3xl font-bold mb-8">Tic Tac Emoji</h1>
-      <div className="grid grid-cols-3 gap-2 bg-primary">
+      <div className="grid grid-cols-3 gap-1 bg-primary">
         {board.map((cell, index) => (
           <button
             key={index}
@@ -83,7 +84,16 @@ export function GameBoard() {
         ))}
       </div>
       <GameStatus {...{ currentPlayer, isTie, winner }} />
-      {/* <PlayerSelectors /> */}
+      <PlayerSelectors
+        {...{
+          currentPlayer,
+          playerOne,
+          playerTwo,
+          setCurrentPlayer,
+          setPlayerOne,
+          setPlayerTwo,
+        }}
+      />
       <button onClick={handleReset}>Reset</button>
     </div>
   );
