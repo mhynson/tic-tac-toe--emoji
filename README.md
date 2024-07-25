@@ -23,18 +23,8 @@ Play Tic Tac Toe with emojis! This is a simple tic tac toe game built using Next
 - Tailwind CSS
   - Simplifies building out the UI quickly
 
-## App File Structure
+## Getting Started
 
-The game is organized into the following directories:
-
-- `public` contains static assets such as images and SVG icons
-- `src` contains the game logic, including components, contexts, and utilities
-  - `components` contains reusable UI components
-  - `context` contains the game context API
-  - `lib` contains utility functions
-- `tailwind.config.ts` configures Tailwind CSS for the project
-
-**Getting Started**
 To run the game, simply clone this repository and run:
 
 ```
