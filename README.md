@@ -7,6 +7,11 @@ Play Tic Tac Toe with emojis! This is a simple tic tac toe game built using Next
 - Play against a 🤖 (bot) or a 👦🏾👧🏾 (friend)
 - Forget X's and O's - choose the emoji that you want to play with
 
+## TODOs
+
+[ ] Add logic for playing against a bot
+[ ] Add a view for choosing the game type
+
 ## Project Features
 
 - UI Built with React + Tailwind
