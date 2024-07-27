@@ -18,7 +18,7 @@ Play Tic Tac Toe with emojis! This is a simple tic tac toe game built using Next
 ## Project Features
 
 - UI Built with React + Tailwind
-- UX managed with React Context and Hooks
+- UX managed with React State and Context
 
 ## Technologies Used
 
