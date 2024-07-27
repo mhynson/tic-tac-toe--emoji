@@ -9,8 +9,8 @@ Play Tic Tac Toe with emojis! This is a simple tic tac toe game built using Next
 
 ## TODOs
 
-[ ] Add logic for playing against a bot
-[ ] Add a view for choosing the game type
+- [ ] Add logic for playing against a bot
+- [ ] Add a view for choosing the game type
 
 ## Project Features
 
