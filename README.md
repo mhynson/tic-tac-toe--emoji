@@ -22,15 +22,15 @@ Play Tic Tac Toe with emojis! This is a simple tic tac toe game built using Next
 
 ## Technologies Used
 
-- NextJS + React
+- **NextJS + React**
   - Chosen for SSR
   - provides a decent baseline for project structure
   - React is a relatively straightforward way to build out the UX and manage state
-- Typescript
+- **Typescript**
   - Strengthens JS with typing which makes for stricter development standards and project flow
-- Tailwind CSS
+- **Tailwind CSS**
   - Simplifies building out the UI quickly
-- Github Actions
+- **Github Actions**
   - Quick and easy way to stand up a demo
 
 ## Getting Started
